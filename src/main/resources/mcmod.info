@@ -1,0 +1,17 @@
+[{
+    "modid": "progressivevillages",
+    "name": "Progressive Villages",
+    "description": "Adds custom villages with progression.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "www.progressivevillages.com",
+    "updateUrl": "",
+    "authors": ["Vidaj"],
+    "credits": "Vidaj",
+    "screenshots": [],
+    "parent": "",
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "useDependencyInformation": "false"
+}]

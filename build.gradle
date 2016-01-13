@@ -25,8 +25,8 @@ ext.configFile = file('build.properties')
 ext.config = parseConfig(configFile)
 
 version = config.version
-group= "com.progressivevillages" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = config.mod_name
+group = config.basepackage // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "${config.archivename}-${config.mc_version}"
 
 minecraft {
     version = "${config.mc_version}-${config.forge_version}"
@@ -42,6 +42,9 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 
     replace 'GRADLE:VERSION', config.version
+    replace 'GRADLE:MOD_ID', config.mod_id
+    replace 'GRADLE:MOD_NAME', config.mod_name
+    replace 'GRADLE:BASEPACKAGE', config.basepackage
     replaceIn 'Constants.java'
 }
 
@@ -80,7 +83,7 @@ processResources
         include 'mcmod.info'
                 
         // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version':project.version, 'mcversion':project.minecraft.version, 'mod_id':config.mod_id, 'mod_name':config.mod_name, 'mod_description':config.mod_description, 'mod_url':config.mod_url, 'mod_authors':config.mod_authors, 'mod_credits':config.mod_credits
     }
     
 

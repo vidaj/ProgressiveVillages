@@ -1,5 +1,7 @@
 package com.progressivevillages.common.blocks.decorative;
 
+import java.util.EnumMap;
+import java.util.EnumSet;
 import java.util.List;
 
 import net.minecraft.block.BlockDirt;
@@ -45,9 +47,16 @@ public class ByzantineTile extends AbstractBlock  implements IMetaBlockName{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void initModel() {
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this),	TileType.Gold.metadata, new ModelResourceLocation(getRegistryName(), "variant="+TileType.Gold.unlocalizedName));
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this),	TileType.Blue.metadata, new ModelResourceLocation(getRegistryName(), "variant="+TileType.Blue.unlocalizedName));
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this),	TileType.Green.metadata, new ModelResourceLocation(getRegistryName(), "variant="+TileType.Green.unlocalizedName));
+		Item item = Item.getItemFromBlock(this);
+		String registryName = getRegistryName();
+		
+		for (TileType type : EnumSet.allOf(TileType.class)) {
+			ModelLoader.setCustomModelResourceLocation(item, type.getMetadata(), new ModelResourceLocation(registryName, "variant=" + type.getUnlocalizedName()));
+		}
+		
+//		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this),	TileType.Gold.metadata, new ModelResourceLocation(getRegistryName(), "variant="+TileType.Gold.unlocalizedName));
+//		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this),	TileType.Blue.metadata, new ModelResourceLocation(getRegistryName(), "variant="+TileType.Blue.unlocalizedName));
+//		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this),	TileType.Green.metadata, new ModelResourceLocation(getRegistryName(), "variant="+TileType.Green.unlocalizedName));
 	}
 	
 	
@@ -55,9 +64,9 @@ public class ByzantineTile extends AbstractBlock  implements IMetaBlockName{
 	@SideOnly(Side.CLIENT)
     public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list)
     {
-        list.add(new ItemStack(this, 1, TileType.Gold.getMetadata()));
-        list.add(new ItemStack(this, 1, TileType.Blue.getMetadata()));
-        list.add(new ItemStack(this, 1, TileType.Green.getMetadata()));
+		for (TileType type : EnumSet.allOf(TileType.class)) {
+			list.add(new ItemStack(this, 1, type.getMetadata()));
+		}
     }
 	
 	@Override
@@ -104,7 +113,8 @@ public class ByzantineTile extends AbstractBlock  implements IMetaBlockName{
     {
         Gold(0, "gold"),
         Blue(1, "blue"),
-        Green(2, "green");
+        Green(2, "green"),
+        DarkBlue(3, "darkblue");
 
         private final int metadata;
         private final String name;
@@ -143,6 +153,7 @@ public class ByzantineTile extends AbstractBlock  implements IMetaBlockName{
         	case 0:	return Gold;
         	case 1: return Blue;
         	case 2: return Green;
+        	case 3: return DarkBlue;
         	}
         	
         	return Green;

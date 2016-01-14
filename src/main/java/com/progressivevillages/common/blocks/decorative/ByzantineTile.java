@@ -34,7 +34,7 @@ public class ByzantineTile extends AbstractBlock  implements IMetaBlockName{
 		super(Material.rock);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, TileType.Gold));
         this.setCreativeTab(CreativeTabs.tabBlock);
-        GameRegistry.registerBlock(this);
+        GameRegistry.registerBlock(this, ItemBlockMeta.class);
 	}
 	
 	@Override
@@ -45,9 +45,9 @@ public class ByzantineTile extends AbstractBlock  implements IMetaBlockName{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void initModel() {
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this),	TileType.Gold.metadata, new ModelResourceLocation(getRegistryName(), TileType.Gold.unlocalizedName));
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this),	TileType.Blue.metadata, new ModelResourceLocation(getRegistryName(), TileType.Blue.unlocalizedName));
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this),	TileType.Green.metadata, new ModelResourceLocation(getRegistryName(), TileType.Green.unlocalizedName));
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this),	TileType.Gold.metadata, new ModelResourceLocation(getRegistryName(), "variant="+TileType.Gold.unlocalizedName));
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this),	TileType.Blue.metadata, new ModelResourceLocation(getRegistryName(), "variant="+TileType.Blue.unlocalizedName));
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this),	TileType.Green.metadata, new ModelResourceLocation(getRegistryName(), "variant="+TileType.Green.unlocalizedName));
 	}
 	
 	
@@ -102,27 +102,24 @@ public class ByzantineTile extends AbstractBlock  implements IMetaBlockName{
 	
 	public static enum TileType implements IStringSerializable
     {
-        Gold(0, "gold", MapColor.dirtColor),
-        Blue(1, "blue", MapColor.dirtColor),
-        Green(2, "green", MapColor.obsidianColor);
+        Gold(0, "gold"),
+        Blue(1, "blue"),
+        Green(2, "green");
 
-//        private static final TileType[] METADATA_LOOKUP = new TileType[values().length];
         private final int metadata;
         private final String name;
         private final String unlocalizedName;
-        private final MapColor field_181067_h;
 
-        private TileType(int metadata, String name, MapColor color)
+        private TileType(int metadata, String name)
         {
-            this(metadata, name, name, color);
+            this(metadata, name, name);
         }
 
-        private TileType(int metadata, String name, String unlocalizedName, MapColor color)
+        private TileType(int metadata, String name, String unlocalizedName)
         {
             this.metadata = metadata;
             this.name = name;
             this.unlocalizedName = unlocalizedName;
-            this.field_181067_h = color;
         }
 
         public int getMetadata()
@@ -134,12 +131,7 @@ public class ByzantineTile extends AbstractBlock  implements IMetaBlockName{
         {
             return this.unlocalizedName;
         }
-
-        public MapColor func_181066_d()
-        {
-            return this.field_181067_h;
-        }
-
+        
         public String toString()
         {
             return this.name;
@@ -153,7 +145,6 @@ public class ByzantineTile extends AbstractBlock  implements IMetaBlockName{
         	case 2: return Green;
         	}
         	
-        	
         	return Green;
         }
 
@@ -161,14 +152,6 @@ public class ByzantineTile extends AbstractBlock  implements IMetaBlockName{
         {
             return this.name;
         }
-
-//        static
-//        {
-//            for (TileType type : values())
-//            {
-//                METADATA_LOOKUP[type.getMetadata()] = type;
-//            }
-//        }
     }
 
 

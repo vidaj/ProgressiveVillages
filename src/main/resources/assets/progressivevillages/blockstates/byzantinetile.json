@@ -1,0 +1,48 @@
+{
+	"forge_marker": 1,
+	"defaults": 
+	{
+		"model": "progressivevillages:byzantinetile",
+		"uvlock": true,
+		"textures": {
+			"thetexture": "progressivevillages:blocks/byzantine_gold_tiles"
+		}
+	},
+
+	"variants": 
+	{
+		"gold": [{
+			"textures": {
+			   "all" : "progressivevillages:blocks/byzantine_gold_tiles"
+			}
+		}],
+		"green": [{
+			"textures": {
+				"all": "progressivevillages:blocks/byzantine_green_tiles"
+			}
+		}],
+		"blue": [{
+			"textures": {
+				"all": "progressivevillages:blocks/byzantine_blue_tiles"
+			}
+		}],
+		"variant": 
+		{
+			"gold": {
+				"textures": {
+				   "thetexture" : "progressivevillages:blocks/byzantine_gold_tiles"
+				}
+			},
+			"green": {
+				"textures": {
+    				"thetexture": "progressivevillages:blocks/byzantine_green_tiles"
+				}
+			},
+			"blue": {
+				"textures": {
+    				"thetexture": "progressivevillages:blocks/byzantine_blue_tiles"
+				}
+			}
+		}
+	}
+}

@@ -23,7 +23,7 @@ public class ProgressiveVillages {
 		proxy.registerOreDict();
 		proxy.registerRecipes();
 		proxy.registerEventHandlers();
-		
+		proxy.registerGui();
 	}
 	
 	@EventHandler

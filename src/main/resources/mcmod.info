@@ -6,7 +6,7 @@
     "mcversion": "${mcversion}",
     "url": ${mod_url},
     "updateUrl": "",
-    "authors": ${mod_authors},
+    "authorList": ${mod_authors},
     "credits": ${mod_credits},
     "screenshots": [],
     "parent": "",

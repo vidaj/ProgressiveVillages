@@ -28,6 +28,9 @@ version = config.version
 group = config.basepackage // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "${config.archivename}-${config.mc_version}"
 
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
 minecraft {
     version = "${config.mc_version}-${config.forge_version}"
     //version = "1.8.9-11.15.0.1663"

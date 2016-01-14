@@ -1,4 +1,4 @@
-package com.progressivevillages.common.blocks.decorative;
+package com.progressivevillages.common.blocks;
 
 import net.minecraft.item.ItemStack;
 
